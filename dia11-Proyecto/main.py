@@ -2,10 +2,9 @@ from art import logo
 import random
 print(logo)
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-user_cards = []
-pc_cards = []
+
 def deal_card():
+<<<<<<< HEAD
     for i in range(2): 
         user_cards.append(random.choice(cards))
         pc_cards.append(random.choice(cards))
@@ -23,13 +22,77 @@ def calculate_score(list):
 a = calculate_score(user_cards)
 print(user_cards, a)
     
+=======
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+
+def calculate_score(hand_cards):
+    value = sum(hand_cards)
+    if value == 21 and len(hand_cards) == 2:
+        return 0
+    if 11 in hand_cards and value > 21:
+        hand_cards.remove(11)
+        hand_cards.append(1)
+    return value
+
+
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return 'EMPATE'
+    elif computer_score == 0:
+        return 'PIERDES, OPONENTE TIENE BLACKJACK'
+    elif user_score == 0:
+        return  'GANAS, TIENES BLACKJACK'
+    elif user_score > 21:
+        return 'PIERDES, ESTAS POR ENCIMA DEL 21'
+    elif computer_score > 21:
+        return 'GANAS, EL OPONENTE ESTA POR ENCIMA DEL 21'
+    elif user_score > computer_score:
+        return 'GANAS'
+    else:
+        return 'PIERDES'
+
+
+def play_game():
+    user_cards = []
+    pc_cards = []
+    is_game_over = False
+    for i in range(2):
+        user_cards.append(deal_card())
+        pc_cards.append(deal_card())
+    while not is_game_over:
+        user_score = calculate_score(user_cards)
+        pc_score = calculate_score(pc_cards)
+        print(f"Tus cartas son: {user_cards}, tu marcador: {user_score}")
+        print(f"La 1ra carta del pc: {pc_cards[0]}")
+
+        if user_score == 0 or pc_score == 0 or user_score > 21:
+            is_game_over = True
+        else:
+            new_card_user = input("Elige 'y' para sacar otra carta, elige 'n' para no sacar: ")
+            if new_card_user == 'y':
+                user_cards.append(deal_card())
+            else:
+                is_game_over = True
+
+    while pc_score != 0 and pc_score < 17:
+        pc_cards.append(deal_card())
+        pc_score = calculate_score(pc_cards)
+    print(f"tu mano: {user_cards}, sacas: {user_score}")
+    print(f"la mano del oponente: {pc_cards}, saco: {pc_score}")
+    print(compare(user_score, pc_score))
+while input('Deseas jugar otra vez. Presiona "y" sino "n"')== 'y':
+    play_game()
+>>>>>>> dae56b46596b81c28faaf2bdff8d6cf7583f8c9f
 
 ############### Blackjack Project #####################
 
-#Difficulty Normal 😎: Use all Hints below to complete the project.
-#Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
-#Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
-#Difficulty Expert 🤯: Only use Hint 1 to complete the project.
+# Difficulty Normal 😎: Use all Hints below to complete the project.
+# Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
+# Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
+# Difficulty Expert 🤯: Only use Hint 1 to complete the project.
 
 ############### Our Blackjack House Rules #####################
 
