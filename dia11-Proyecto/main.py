@@ -11,7 +11,15 @@ def deal_card():
         pc_cards.append(random.choice(cards))
 deal_card()
 def calculate_score(list):
-    return sum(list)
+    value = sum(list)
+    if value == 21:
+        return 0
+    elif value > 21:
+        cards.remove(11)
+        cards.append(1)
+        return 1
+    else: return value
+
 a = calculate_score(user_cards)
 print(user_cards, a)
     
