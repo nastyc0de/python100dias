@@ -4,7 +4,6 @@ print(logo)
 
 
 def deal_card():
-<<<<<<< HEAD
     for i in range(2): 
         user_cards.append(random.choice(cards))
         pc_cards.append(random.choice(cards))
