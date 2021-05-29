@@ -1,9 +1,16 @@
 
-from turtle import Turtle, Screen, radians
+from turtle import Turtle, Screen, colormode
 import random
 timmy = Turtle()
 timmy.shape('turtle')
 
+colormode(255)
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return (r, g, b)
 
 def random_walk(n):
     turn = [0,90,180,270,360]
@@ -11,9 +18,8 @@ def random_walk(n):
     inc = 1
     while inc <=n:
         aleatorio = random.choice(turn)
-        rand_color = random.choice(colors)
         timmy.right(aleatorio)
-        timmy.pencolor(rand_color)
+        timmy.pencolor(random_color())
         timmy.forward(15)
         inc +=1
 
