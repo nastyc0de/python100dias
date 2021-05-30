@@ -14,7 +14,6 @@ def random_color():
 
 def random_walk(n):
     turn = [0,90,180,270,360]
-    colors = ['red', 'crimson','blue','green','yellow', 'salmon', 'medium blue', 'dodger blue', 'olive drab','lime green']
     inc = 1
     while inc <=n:
         aleatorio = random.choice(turn)
@@ -31,8 +30,16 @@ def turtle_draw(n):
             timmy.forward(100)
         inc +=1
 
+        
+def draw_spiro(size_gap):
+    for _ in range(100):
+        random_color()    
+        timmy.circle(100)
+        timmy.left(size_gap)
+        timmy.pencolor(random_color())
 # turtle_draw(5)
-random_walk(200)
+# random_walk(200)
+draw_spiro(5)
 screen = Screen()
 screen.exitonclick()
 
