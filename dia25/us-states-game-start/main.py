@@ -17,10 +17,12 @@ while len(correct_answer) < 50:
     answer = screen.textinput(title=f'{len(correct_answer)}/50 Adivina el estado', prompt='Escribe un estado: ').title()
     if answer == 'Exit':
         missing_states = []
-        for state in all_state:
-            if state not in correct_answer:
-                missing_states.append(state)
-        print(missing_states)
+
+        state = [missing_states.append(state) for state in all_state if state not in correct_answer]
+        # for state in all_state:
+        #     if state not in correct_answer:
+        #         missing_states.append(state)
+
         export_dataframe = pd.DataFrame(missing_states)
         export_dataframe.to_csv('missing.csv')
         break
