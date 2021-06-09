@@ -67,7 +67,7 @@ big_label = Label(text='Timer', fg=GREEN, bg=YELLOW, highlightthickness=0, font=
 big_label.grid(column=1, row=0)
 # canvas
 canvas = Canvas(width=210, height=230, bg=YELLOW, highlightthickness=0)
-tomato = PhotoImage(file='/home/serie5/Escritorio/Python en 100 dias/dia28/tomato.png')
+tomato = PhotoImage(file='tomato.png')
 canvas.create_image(100, 115, image=tomato)
 timer_text = canvas.create_text(100, 130, text='00:00', fill='white', font=(FONT_NAME, 30, 'bold'))
 canvas.grid(column=1, row=1)
