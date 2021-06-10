@@ -1,15 +1,31 @@
-from os import cpu_count
+from random import choice, randint, shuffle
 from tkinter import *
 from tkinter import messagebox
+import pyperclip
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    letter = [choice(letters) for _ in range(randint(8, 10))]
+    number = [choice(numbers) for _ in range(randint(2, 4))]
+    symbol = [choice(symbols) for _ in range(randint(2, 4))]
+
+    password_list = letter+ number + symbol
+    shuffle(password_list)
+    password = ''.join(password_list)
+    passwordInput.insert(0, password)
+    pyperclip.copy(password)
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def get_data():
     name = websiteInput.get()
     password = passwordInput.get()
     email = emailInput.get()
     
-    if len(password) == 0 or len(email) == 0:
-        empty_field = messagebox.askquestion(title=name, message='No dejes datos vacios')
+    if len(password) == 0 or len(name) == 0:
+        messagebox.askquestion(title=name, message='No dejes datos vacios')
     else:
         is_ok = messagebox.askokcancel(title=name, message=f'Estos son los datos \nEmail: {email} \nPassword: {password}')
         if is_ok:
@@ -48,7 +64,7 @@ emailInput.insert(0, 'password@gmail.com')
 passwordInput = Entry(width=21)
 passwordInput.grid(column=1,row=3)
 # buttons
-generateBtn = Button(text='Generate Password')
+generateBtn = Button(text='Generate Password', command=generate_password)
 generateBtn.grid(column=2, row=3)
 addBtn = Button(text='Add', width=36, command=get_data)
 addBtn.grid(column=1, row=4, columnspan=2)
