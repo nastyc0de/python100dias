@@ -3,6 +3,19 @@ from tkinter import *
 from tkinter import messagebox
 import pyperclip
 import json
+
+def search_password():
+    name = websiteInput.get()
+    try:
+        with open('data.json', 'r') as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showerror(title='error', message='Archivo no encontrado')
+    else:
+            if name in data:
+                messagebox.showinfo(title=f'{name}', message=f"email: {data[name]['email']}\n password:{data[name]['password']}")
+            else:
+                messagebox.showerror(title='Error', message="Contrasena no encontrada")
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -72,8 +85,8 @@ emailLbl.grid(column=0, row=2)
 passwordLbl = Label(text='password:')
 passwordLbl.grid(column=0,row=3)
 # inputs
-websiteInput = Entry(width=35)
-websiteInput.grid(column=1, row=1, columnspan=2)
+websiteInput = Entry(width=21)
+websiteInput.grid(column=1, row=1)
 websiteInput.focus()
 
 emailInput = Entry(width=35)
@@ -85,6 +98,8 @@ passwordInput.grid(column=1,row=3)
 # buttons
 generateBtn = Button(text='Generate Password', command=generate_password)
 generateBtn.grid(column=2, row=3)
+searchBtn = Button(text='Search', command=search_password)
+searchBtn.grid(column=2, row=1)
 addBtn = Button(text='Add', width=36, command=get_data)
 addBtn.grid(column=1, row=4, columnspan=2)
 
