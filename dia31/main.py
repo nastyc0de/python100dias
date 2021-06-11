@@ -37,7 +37,7 @@ def is_known():
     dict_data.remove(value_dict)
     data = pd.DataFrame(dict_data)
     data.to_csv('./data/words_to_learn.csv', index=False)
-    generate_word() 
+    generate_word()
 
 # window
 window = Tk()
