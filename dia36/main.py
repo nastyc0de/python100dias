@@ -13,10 +13,14 @@ response = requests.get(url='https://www.alphavantage.co/query', params=paramete
 response.raise_for_status()
 data = response.json()
 data_list = [value for key, value in data.items()]
-yesterday = data_list[-1]
-print(yesterday)
-# close_price_yesterday = yesterday['4. close']
-day_before = data_list[-2]
+yesterday = data_list[0]
+# print(yesterday)
+# yesterday_closing = yesterday['4. close']
+
+day_before = data_list[1]
+print(day_before)
+# day_before_closing = day_before["4. close"]
+# print(day_before_closing)
 # close_price_day_before = day_before['4. close']
 
 ## STEP 2: Use https://newsapi.org
