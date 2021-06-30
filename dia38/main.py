@@ -1,11 +1,13 @@
 import requests
+from dotenv import load_dotenv
 import os
 from datetime import datetime
 
-APP_ID = os.environ["API_ID_38"]
+load_dotenv()
+APP_ID = os.getenv('APP_KEY')
 print(APP_ID)
-API_KEY = os.environ.get('API_KEY_38')
-print(os.environ[API_KEY_38])
+API_KEY = os.environ.get('APP_KEY')
+print(API_KEY)
 URL = 'https://trackapi.nutritionix.com/v2/natural/exercise'
 
 # workout = input("Que ejercicio hiciste hoy dia: ")
@@ -30,7 +32,7 @@ DATE = day.strftime("%x")
 TIME = day.strftime("%X")
 # # Usando La Configuracion basica
 # SECRET = 'Basic YW5kcmVzOjE5OTEyOTA4'
-SECRET = os.environ.get('SECRET_38')
+SECRET = os.environ.get('SECRET')
 # En sheety
 sheety_url = 'https://api.sheety.co/3f11d98e83a8af02d3de93f531888435/myWorkouts/workouts'
 
