@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-firefox_path = r"C:\Users\plagu\Documents\Development\geckodriver.exe"
+firefox_path = "/Users/Andres/Documents/geckodriver"
 driver = webdriver.Firefox(executable_path=firefox_path)
 driver.get("https://www.empireonline.com/movies/features/best-movies-2/")
     # /html/body/div[1]/main/article/div[5]/div[2]/div[1]/h3
