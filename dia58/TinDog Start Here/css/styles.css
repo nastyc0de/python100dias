@@ -6,7 +6,7 @@ body{
     color: #fff;
 }
 .container-fluid{
-    padding: 3% 15%;
+    padding: 3% 15% 7%;
 }
 h1 {  
     font-family: 'Montserrat', sans-serif;
@@ -50,12 +50,16 @@ p{
 }
 /* image */
 .title-image{
-    width: 60%;
+    width: 22%;
     transform: rotate(25deg);
+    position: absolute;
+    right: 25%;
 }
 /* features */
 #features{
     padding: 7% 15%;
+    background-color: #fff;
+    position: relative;
 }
 
 .feature-box{
