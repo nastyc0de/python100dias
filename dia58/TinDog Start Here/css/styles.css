@@ -8,26 +8,26 @@ body{
 .container-fluid{
     padding: 3% 15% 7%;
 }
-h1 {  
+h1, h2, h3 {  
     font-family: 'Montserrat', sans-serif;
-    font-size: 3.5rem;  
-    line-height: 1.5;  
-    font-weight: 900;
-
 }
 h3{
-    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
 }
 h2{
-    font-family: 'Montserrat', sans-serif;
     font-size: 3rem;
     line-height: 1.5;
 }
 p{
     color: #8f8f8f;
-}    
+}
+/* heading */
+.bigHeading{
+    font-size: 3.5rem;  
+    line-height: 1.5;  
+    font-weight: 900;
+}
 /* navegation bar */
 .navbar{
     padding: 0 0 4.5rem;
