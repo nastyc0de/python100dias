@@ -1,14 +1,17 @@
-<!DOCTYPE HTML>
-
-<html>
-	<head>
-		<title>Login</title>
-	</head>
-	<body>
+{%extends 'bootstrap/base.html'%}
+{%import "bootstrap/wtf.html" as wtf%}
+{%block title%}Login{%endblock%}
+{%block content%}
         <div class="container">
-		<h1>Login</h1>
+			<div class="row">
+				<div class="col-sm-12 col-md-8">
+					<h1>Login</h1>
+					{{wtf.quick_form(form, novalidate=True)}}
+					<p class="space-above"><a href="{{url_for('login')}}">See all cafes</a></p>
+				</div>
+			</div>
         <!-- This is where our form will go. -->
-			<form method="POST" action="{{ url_for('login') }}" novalidate>
+			<!-- <form method="POST" action="{{ url_for('login') }}" novalidate>
 				{{ form.csrf_token }}
 				<p>
 					{{ form.email.label }} <br> {{ form.email(size=30) }}
@@ -23,7 +26,6 @@
 					{% endfor %}
 				</p>
 				{{form.submit}}
-			</form>
+			</form> -->
         </div>
-	</body>
-</html>
+{%endblock%}
