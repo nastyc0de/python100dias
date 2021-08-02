@@ -71,8 +71,21 @@ def add():
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
-    print(id)
-    return render_template('make-post.html', request = request.method)
+    post = BlogPost.query.get_or_404(id)
+    postForm = CreatePostForm(obj=post)
+    if postForm.validate_on_submit():
+        postForm.populate_obj(post)
+        date = datetime.today().strftime('%B %d %Y')
+        post.date = date
+        db.session.commit()
+        return redirect(url_for('get_all_posts'))
+    return render_template('make-post.html', form = postForm, is_edit=True)
+@app.route('/delete/<int:id>', methods=['GET','POST'])
+def delete(id):
+    post = BlogPost.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('get_all_posts'))
 @app.route("/about")
 def about():
     return render_template("about.html")
